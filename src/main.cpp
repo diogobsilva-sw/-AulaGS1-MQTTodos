@@ -112,7 +112,7 @@ void loop()
 
   // ---------------------------- Piscar LED ----------------------------
 
-  if (msgRecebida == "P")
+  if (msgRecebida == "Piscar")
   {
     piscando = true;
     msgRecebida = "";
@@ -130,19 +130,11 @@ void loop()
     }
   }
 
-  if (msgRecebida == "Ligar")
+  if (msgRecebida == "LED")
   {
     piscando = false;
-    estadoLED = true;
-    digitalWrite(LED, HIGH);
-    msgRecebida = "";
-  }
-
-  if (msgRecebida == "Desligar")
-  {
-    piscando = false;
-    estadoLED = false;
-    digitalWrite(LED, LOW);
+    estadoLED = !estadoLED;
+    digitalWrite(LED, estadoLED);
     msgRecebida = "";
   }
 }
